@@ -1,7 +1,26 @@
-﻿@page "/"
+﻿@page "/{GlobalId:int?}"
+@using BlazorApp1.Services
+@inject GlobalStateService GlobalState
+@inject NavigationManager Navigation
 
-<PageTitle>Home</PageTitle>
+<h1>Welcome</h1>
+@if (GlobalState.GlobalId!=null)
+{
+    <p>ID: @GlobalState.GlobalId</p>
+}
 
-<h1>Hello, world!</h1>
+@code {
+    [Parameter]
+    public int? GlobalId { get; set; } = null;
 
-Welcome to your new app.
+    protected override void OnInitialized()
+    {
+        if (GlobalId.HasValue)
+        {
+            GlobalState.GlobalId = GlobalId.Value;
+        }
+
+    }
+
+   
+}

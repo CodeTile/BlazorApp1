@@ -2,6 +2,6 @@
 {
 	public class GlobalStateService
 	{
-		public string? GlobalId { get;  set; } = string.Empty;
+		public int? GlobalId { get;  set; } = null;
 	}
 }
